@@ -11,7 +11,12 @@ class QuizViewModel extends BaseModel {
   Api api;
 
   List<Question> _questions;
+
+  int _totalQuestions = 0;
+  int get totalQuestions => _totalQuestions;
+
   int _index = 0;
+  int get index => _index;
 
   double _score = 0;
   double get score => _score;
@@ -29,6 +34,7 @@ class QuizViewModel extends BaseModel {
     api.getQuestions().asStream().listen((response) {
       _questions = response;
       _questions.shuffle();
+      _totalQuestions = _questions.length;
       _currentQuestion.add(_questions[_index]);
     }).onError((error) {
       _currentQuestion.addError(error.message);

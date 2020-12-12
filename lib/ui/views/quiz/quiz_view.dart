@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:provider_arc/core/constants/app_contstants.dart';
 import 'package:provider_arc/core/models/question.dart';
+import 'package:provider_arc/ui/shared/ui_helpers.dart';
 import 'package:provider_arc/ui/views/quiz/quiz_view_model.dart';
 
 import 'package:provider_arc/ui/shared/text_styles.dart';
@@ -58,6 +59,11 @@ class QuizView extends StatelessWidget {
                         question: question.question,
                         checkAnswer: model.checkAnswer,
                       ),
+                      UIHelper.verticalSpaceMedium,
+                      Text(
+                        'Questão ${model.index + 1} de ${model.totalQuestions}',
+                        style: subHeaderStyle,
+                      )
                     ],
                   );
                 },
